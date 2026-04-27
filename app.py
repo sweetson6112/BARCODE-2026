@@ -4,18 +4,7 @@ from io import BytesIO
 
 # ---------------- CONFIG ----------------
 st.set_page_config(page_title="Barcode Scanner", layout="centered")
-
 st.title("📦 Barcode Scanner System")
-
-# ---------------- ANIMATION ----------------
-VIDEO_FILE = "watermarked_preview.mp4"
-
-try:
-    with open(VIDEO_FILE, "rb") as video_file:
-        video_bytes = video_file.read()
-    st.video(video_bytes)
-except FileNotFoundError:
-    st.info("⚠ Animation file not found. Add 'watermarked_preview.mp4' to your repo.")
 
 REQUIRED_COLUMNS = ["Item Number", "Description", "Barcode"]
 
@@ -29,7 +18,7 @@ if "pending_barcode" not in st.session_state:
     st.session_state.pending_barcode = None
 
 # ---------------- MASTER FILE ----------------
-st.subheader("Created by Sweetson Joseph")
+st.subheader("📂 Upload Master File")
 uploaded_file = st.file_uploader("Upload Excel (.xlsx)", type=["xlsx"])
 
 if not uploaded_file:
